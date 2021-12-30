@@ -12,23 +12,24 @@ import model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateChannelController implements Initializable {
+public class CreateGroupController implements Initializable {
     @FXML
     private AnchorPane anchorPane;
 
     @FXML
     private TableView<User> userList;
+
     @FXML
     private TableColumn<User, String> list;
 
     @FXML
-    private TextField channelName;
+    private Button createBTN;
 
     @FXML
-    private Button createButton;
+    private TextField groupName;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
 }

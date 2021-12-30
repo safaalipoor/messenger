@@ -60,6 +60,20 @@ public class MainPageController implements Initializable {
             }
         });
         exit.setOnAction(event -> Exit());
+        createChannel.setOnAction(event -> {
+            try {
+                openCreateChannelPage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        createGroup.setOnAction(event -> {
+            try {
+                openCreateGroupPage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
 
 
@@ -75,8 +89,19 @@ public class MainPageController implements Initializable {
         profilestage.setScene(new Scene(root));
         profilestage.show();
 
-
-
-
+    }
+    public void openCreateChannelPage() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/CreateChannel.fxml"));
+        Stage channel = new Stage();
+        channel.setTitle("Create channel");
+        channel.setScene(new Scene(root));
+        channel.show();
+    }
+    public void openCreateGroupPage() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/CreateGroup.fxml"));
+        Stage group = new Stage();
+        group.setTitle("Create group");
+        group.setScene(new Scene(root));
+        group.show();
     }
 }
