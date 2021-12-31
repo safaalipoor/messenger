@@ -50,7 +50,7 @@ public class Loginpagecontroller implements Initializable {
         errorlabel.setText("");
         RegisterBTN.setOnAction(e -> {
             try {
-                openregisterpage();
+                openRegisterPage();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -64,7 +64,7 @@ public class Loginpagecontroller implements Initializable {
         });
 
     }
-    public void openregisterpage() throws Exception{
+    public void openRegisterPage() throws Exception{
         if (registerStage == null) {
             AnchorPane root = FXMLLoader.load(getClass().getResource("../view/RegisterPage.fxml"));
             Stage registerStage = new Stage();
