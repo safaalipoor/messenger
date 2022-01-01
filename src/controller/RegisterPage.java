@@ -73,8 +73,9 @@ public class RegisterPage implements Initializable {
     public void createUser(){
         if (checkFields()){
             if (checkPass()){
+                int hashPassword =password.getText().hashCode();
                 User user =new User(name.getText() , lastname.getText(),username.getText()
-                        ,password.getText(), phonenumber.getText());
+                        ,password.getText(), hashPassword,phonenumber.getText());
                 user.getUserArrayList().add(user);
                 clear();
             }

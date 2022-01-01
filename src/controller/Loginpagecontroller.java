@@ -95,9 +95,10 @@ public class Loginpagecontroller implements Initializable {
     public boolean checkLogin(){
         if (checkFields()) {
             User user1 = new User();
+            int hashPass = password.getText().hashCode();
             for (int i = 0; i < user1.getUserArrayList().size(); i++) {
                 if (username.getText().equals(user1.getUserArrayList().get(i).getUserName())
-                        && password.getText().equals(user1.getUserArrayList().get(i).getPassword())){
+                        && hashPass ==user1.getUserArrayList().get(i).getHashPassword()){
                     return true;
                 }
                 else{

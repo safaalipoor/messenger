@@ -7,16 +7,18 @@ public class User {
     private String lastName;
     private String userName;
     private String password;
+    private int hashPassword;
     private String phoneNumber;
     static ArrayList<User> userArrayList = new ArrayList<>();
 
 
 
-    public User(String name, String lastName, String userName, String password, String phoneNumber) {
+    public User(String name, String lastName, String userName, String password,int hashPassword, String phoneNumber) {
         this.name = name;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
+        this.hashPassword=hashPassword;
         this.phoneNumber = phoneNumber;
     }
 
@@ -69,5 +71,13 @@ public class User {
 
     public void setUserArrayList(ArrayList<User> userArrayList) {
         this.userArrayList = userArrayList;
+    }
+
+    public int getHashPassword() {
+        return hashPassword;
+    }
+
+    public void setHashPassword(int hashPassword) {
+        this.hashPassword = hashPassword;
     }
 }

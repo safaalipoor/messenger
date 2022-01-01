@@ -90,7 +90,7 @@ public class MainPageController implements Initializable {
 
     }
     public void openCreateChannelPage() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/ChatPage.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/CreateChannel.fxml"));
         Stage channel = new Stage();
         channel.setTitle("Create channel");
         channel.setScene(new Scene(root));
