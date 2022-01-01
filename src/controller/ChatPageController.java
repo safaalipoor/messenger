@@ -47,10 +47,21 @@ public class ChatPageController implements Initializable {
 
     @FXML
     private Button closeBTN;
+    @FXML
+    private Label OnlineBTN;
+
+    public ChatPageController() {
+    }
+
+    public Label getNameLBL() {
+        return nameLBL;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nameLBL.setText("");
         PmLBL.setText("");
+        OnlineBTN.setText("");
         closeBTN.setOnAction(event -> closePage());
         sendBTN.setOnAction(event -> sendMessage());
 
@@ -59,6 +70,7 @@ public class ChatPageController implements Initializable {
         ((Stage)closeBTN.getScene().getWindow()).close();
     }
     public void sendMessage(){
+        OnlineBTN.setText("Online");
         PmLBL.setText(messageText.getText());
     }
 }

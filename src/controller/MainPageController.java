@@ -4,16 +4,19 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.User;
+import sun.security.pkcs11.P11Util;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,12 +27,6 @@ public class MainPageController implements Initializable {
 
     @FXML
     private HBox hbox;
-
-    @FXML
-    private TableView<User> tableview;
-
-    @FXML
-    private TableColumn<User, String> list;
 
     @FXML
     private VBox vbox;
@@ -49,8 +46,17 @@ public class MainPageController implements Initializable {
     @FXML
     private Button exit;
 
+    @FXML
+    private TextField userNameField;
+
+    @FXML
+    private Button searchBTN;
+    @FXML
+    private Label errorLBL;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        errorLBL.setText("");
         viewProfile.setOnAction(event -> {
             try {
                 viewprofile();
@@ -73,6 +79,13 @@ public class MainPageController implements Initializable {
                 e.printStackTrace();
             }
         });
+        searchBTN.setOnAction(event -> {
+            try {
+                openChatPage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
 
 
@@ -83,10 +96,10 @@ public class MainPageController implements Initializable {
     }
     public void viewprofile() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("../view/ViewProfile.fxml"));
-        Stage profilestage =new Stage();
-        profilestage.setTitle(" Profile");
-        profilestage.setScene(new Scene(root));
-        profilestage.show();
+        Stage profileStage =new Stage();
+        profileStage.setTitle(" Profile");
+        profileStage.setScene(new Scene(root));
+        profileStage.show();
 
     }
     public void openCreateChannelPage() throws IOException {
@@ -102,5 +115,35 @@ public class MainPageController implements Initializable {
         group.setTitle("Create group");
         group.setScene(new Scene(root));
         group.show();
+    }
+    public boolean findUser(){
+        User user1 = new User();
+        for (int i = 0; i < user1.getUserArrayList().size(); i++) {
+            if (userNameField.getText().equals(user1.getUserArrayList().get(i).getUserName())){
+               // ShowUserNameInChat(userNameField.getText());
+                return true;
+            }
+        }
+        return false;
+    }
+    public void openChatPage() throws IOException {
+        if (findUser()) {
+            BorderPane root = FXMLLoader.load(getClass().getResource("../view/ChatPage.fxml"));
+            Stage chatPage = new Stage();
+            chatPage.setTitle("");
+            chatPage.setScene(new Scene(root));
+            chatPage.show();
+        }
+        else {
+            errorLBL.setText("user not found !!");
+            errorLBL.setAlignment(Pos.CENTER);
+            errorLBL.setTextFill(Paint.valueOf(("#FF0000")));
+
+        }
+
+    }
+    public void ShowUserNameInChat(String name){
+        ChatPageController chat = new ChatPageController();
+        chat.getNameLBL().setText(name);
     }
 }
