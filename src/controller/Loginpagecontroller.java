@@ -84,6 +84,7 @@ public class Loginpagecontroller implements Initializable {
     }
     public void openMainPage() throws IOException {
         if (checkLogin()){
+            ((Stage)RegisterBTN.getScene().getWindow()).close();
             AnchorPane root1 = FXMLLoader.load(getClass().getResource("../view/MainPage.fxml"));
             Stage stage = new Stage();
             stage.setTitle("  Messenger");

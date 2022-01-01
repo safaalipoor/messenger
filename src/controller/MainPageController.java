@@ -14,7 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.User;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -91,7 +90,7 @@ public class MainPageController implements Initializable {
 
     }
     public void openCreateChannelPage() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/CreateChannel.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/ChatPage.fxml"));
         Stage channel = new Stage();
         channel.setTitle("Create channel");
         channel.setScene(new Scene(root));
