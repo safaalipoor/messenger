@@ -53,13 +53,16 @@ public class MainPageController implements Initializable {
     private Button searchBTN;
     @FXML
     private Label errorLBL;
+    static String nameUser;
+
+    static String usernameChannel , saveName , saveBio;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         errorLBL.setText("");
         viewProfile.setOnAction(event -> {
             try {
-                viewprofile();
+                viewProfile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -94,7 +97,7 @@ public class MainPageController implements Initializable {
         ((Stage)exit.getScene().getWindow()).close();
 
     }
-    public void viewprofile() throws IOException {
+    public void viewProfile() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("../view/ViewProfile.fxml"));
         Stage profileStage =new Stage();
         profileStage.setTitle(" Profile");
@@ -120,7 +123,7 @@ public class MainPageController implements Initializable {
         User user1 = new User();
         for (int i = 0; i < user1.getUserArrayList().size(); i++) {
             if (userNameField.getText().equals(user1.getUserArrayList().get(i).getUserName())){
-               // ShowUserNameInChat(userNameField.getText());
+                nameUser=user1.getUserArrayList().get(i).getUserName();
                 return true;
             }
         }
@@ -140,10 +143,6 @@ public class MainPageController implements Initializable {
             errorLBL.setTextFill(Paint.valueOf(("#FF0000")));
 
         }
+    }
 
-    }
-    public void ShowUserNameInChat(String name){
-        ChatPageController chat = new ChatPageController();
-        chat.getNameLBL().setText(name);
-    }
 }

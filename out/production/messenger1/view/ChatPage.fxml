@@ -23,7 +23,7 @@
                         <Circle fx:id="profileIcon" fill="WHITE" layoutX="24.0" layoutY="21.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
                         <ImageView fx:id="profile" fitHeight="38.0" fitWidth="40.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../Downloads/picture1.png" />
+                              <Image url="@../image/picture1.png" />
                            </image>
                         </ImageView>
                         <Label fx:id="nameLBL" layoutX="47.0" layoutY="5.0" prefHeight="2.0" prefWidth="82.0" text="Label" />

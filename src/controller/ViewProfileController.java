@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -37,12 +36,12 @@ public class ViewProfileController implements Initializable {
 
     @FXML
     private Button EditBTN;
-    private String saveName , saveBio;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nameText.setText(saveName);
-        bioText.setText(saveBio);
+        nameText.setText(MainPageController.saveName);
+        bioText.setText(MainPageController.saveBio);
         editLBL.setText("");
         exitBTN.setOnAction(event -> exit());
         EditBTN.setOnAction(event -> EditProfile());
@@ -55,10 +54,8 @@ public class ViewProfileController implements Initializable {
 
     }
     public void EditProfile(){
-        nameText.setText(nameText.getText());
-        bioText.setText(bioText.getText());
-        saveName = nameText.getText();
-        saveBio = bioText.getText();
+        MainPageController.saveName = nameText.getText();
+        MainPageController.saveBio = bioText.getText();
         editLBL.setText("Profile edited successfully");
         editLBL.setTextFill(Paint.valueOf(("#208a27")));
 

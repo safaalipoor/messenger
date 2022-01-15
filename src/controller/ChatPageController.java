@@ -60,6 +60,7 @@ public class ChatPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nameLBL.setText("");
+        showUserNameInChat();
         PmLBL.setText("");
         OnlineBTN.setText("");
         closeBTN.setOnAction(event -> closePage());
@@ -73,4 +74,6 @@ public class ChatPageController implements Initializable {
         OnlineBTN.setText("Online");
         PmLBL.setText(messageText.getText());
     }
+    public void showUserNameInChat()
+    {nameLBL.setText(MainPageController.nameUser);}
 }
